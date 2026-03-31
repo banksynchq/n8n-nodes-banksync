@@ -121,10 +121,12 @@ export async function banksyncApiRequestAllTransactions(
   accountId: string,
   qs: IDataObject,
 ): Promise<IDataObject[]> {
+  const credentials = await this.getCredentials('bankSyncApi');
+  const baseUrl = (credentials.baseUrl as string) || 'https://api.banksync.io';
+  const endpoint = `/v1/banks/${bankId}/accounts/${accountId}/transactions`;
+
   const allItems: IDataObject[] = [];
   let cursor: string | undefined;
-
-  // Remove from/to if using cursor-based pagination
   const queryParams = { ...qs };
 
   do {
@@ -133,16 +135,11 @@ export async function banksyncApiRequestAllTransactions(
     }
 
     // banksyncApiRequest unwraps data, but we need meta for pagination.
-    // Use raw httpRequest instead.
-    const credentials = await this.getCredentials('bankSyncApi');
-    const baseUrl = (credentials.baseUrl as string) || 'https://api.banksync.io';
-
+    // Use raw httpRequest to access the full response envelope.
     const rawResponse = await this.helpers.httpRequest({
       method: 'GET',
-      url: `${baseUrl}/v1/banks/${bankId}/accounts/${accountId}/transactions`,
-      headers: {
-        'X-API-Key': credentials.apiKey as string,
-      },
+      url: `${baseUrl}${endpoint}`,
+      headers: { 'X-API-Key': credentials.apiKey as string },
       qs: queryParams,
       json: true,
     });
