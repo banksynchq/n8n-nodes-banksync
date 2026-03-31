@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-banksync",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "n8n community node for the BankSync financial data API",
   "keywords": [
     "banking",
@@ -13,8 +13,19 @@
   "license": "MIT",
   "author": {
     "name": "BankSync",
+    "email": "admin@banksync.io",
     "url": "https://banksync.io"
   },
+  "maintainers": [
+    {
+      "name": "BankSync Admin",
+      "email": "admin@banksync.io"
+    },
+    {
+      "name": "BankSync Support",
+      "email": "support@banksync.io"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/banksynchq/n8n-nodes-banksync.git"
