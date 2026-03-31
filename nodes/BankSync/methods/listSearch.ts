@@ -21,7 +21,8 @@ export async function searchAccounts(
   this: ILoadOptionsFunctions,
   filter?: string,
 ): Promise<INodeListSearchResult> {
-  const bankId = this.getNodeParameter('bankId', '') as string;
+  const bankIdLocator = this.getNodeParameter('bankId', '') as IDataObject;
+  const bankId = (bankIdLocator.value as string) || (bankIdLocator as unknown as string);
   if (!bankId) {
     return { results: [] };
   }
@@ -110,7 +111,8 @@ export async function searchJobs(
   this: ILoadOptionsFunctions,
   filter?: string,
 ): Promise<INodeListSearchResult> {
-  const feedId = this.getNodeParameter('feedId', '') as string;
+  const feedIdLocator = this.getNodeParameter('feedId', '') as IDataObject;
+  const feedId = (feedIdLocator.value as string) || (feedIdLocator as unknown as string);
   if (!feedId) {
     return { results: [] };
   }
