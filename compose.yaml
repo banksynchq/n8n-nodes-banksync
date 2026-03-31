@@ -1,0 +1,16 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n-dev
+    ports:
+      - '5678:5678'
+    environment:
+      - N8N_CUSTOM_EXTENSIONS=/custom-nodes
+      - N8N_LOG_LEVEL=info
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./dist:/custom-nodes/node_modules/n8n-nodes-banksync/dist
+      - ./package.json:/custom-nodes/node_modules/n8n-nodes-banksync/package.json
+
+volumes:
+  n8n_data:

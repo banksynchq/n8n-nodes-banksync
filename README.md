@@ -89,16 +89,17 @@ pnpm run build
 pnpm test
 ```
 
-To test locally with n8n:
+### Local n8n testing (Docker)
+
+Requires Docker. Builds the node and starts n8n at `http://localhost:5678` with the node loaded:
 
 ```bash
-# Link the node
-cd ~/.n8n/custom
-ln -s /path/to/n8n-nodes-banksync
-
-# Start n8n
-pnpm run dev
+pnpm run dev          # Build + start n8n
+pnpm run dev:restart  # Rebuild + restart after code changes
+pnpm run dev:stop     # Stop n8n
 ```
+
+Then in the n8n UI: add a BankSync credential with your API key and test the node.
 
 ## License
 
