@@ -9,18 +9,18 @@ function createMockContext(httpResponse: unknown, statusCode?: number) {
       baseUrl: 'https://api.banksync.io',
     }),
     helpers: {
-      httpRequest: vi.fn(),
+      httpRequestWithAuthentication: vi.fn(),
     },
     getNode: vi.fn().mockReturnValue({ name: 'BankSync', type: 'bankSync' }),
   };
 
   if (statusCode && statusCode >= 400) {
-    mockContext.helpers.httpRequest.mockRejectedValue({
+    mockContext.helpers.httpRequestWithAuthentication.mockRejectedValue({
       statusCode,
       response: { body: httpResponse },
     });
   } else {
-    mockContext.helpers.httpRequest.mockResolvedValue(httpResponse);
+    mockContext.helpers.httpRequestWithAuthentication.mockResolvedValue(httpResponse);
   }
 
   return mockContext;
@@ -31,13 +31,11 @@ describe('banksyncApiRequest', () => {
     const ctx = createMockContext(banksFixture);
     const result = await banksyncApiRequest.call(ctx as any, 'GET', '/v1/banks');
 
-    expect(ctx.helpers.httpRequest).toHaveBeenCalledWith(
+    expect(ctx.helpers.httpRequestWithAuthentication).toHaveBeenCalledWith(
+      'bankSyncApi',
       expect.objectContaining({
         method: 'GET',
         url: 'https://api.banksync.io/v1/banks',
-        headers: expect.objectContaining({
-          'X-API-Key': 'bsk_test_key_1234567890',
-        }),
       }),
     );
     expect(result).toEqual(banksFixture.data);
@@ -50,7 +48,8 @@ describe('banksyncApiRequest', () => {
       status: 'completed',
     });
 
-    expect(ctx.helpers.httpRequest).toHaveBeenCalledWith(
+    expect(ctx.helpers.httpRequestWithAuthentication).toHaveBeenCalledWith(
+      'bankSyncApi',
       expect.objectContaining({
         qs: { limit: 10, status: 'completed' },
       }),
@@ -65,7 +64,8 @@ describe('banksyncApiRequest', () => {
       dataType: 'transactions',
     });
 
-    expect(ctx.helpers.httpRequest).toHaveBeenCalledWith(
+    expect(ctx.helpers.httpRequestWithAuthentication).toHaveBeenCalledWith(
+      'bankSyncApi',
       expect.objectContaining({
         method: 'POST',
         body: { name: 'Test Feed', source: 'sync', dataType: 'transactions' },
@@ -118,7 +118,8 @@ describe('banksyncApiRequest', () => {
 
     await banksyncApiRequest.call(ctx as any, 'GET', '/v1/banks');
 
-    expect(ctx.helpers.httpRequest).toHaveBeenCalledWith(
+    expect(ctx.helpers.httpRequestWithAuthentication).toHaveBeenCalledWith(
+      'bankSyncApi',
       expect.objectContaining({
         url: 'https://staging.banksync.io/v1/banks',
       }),

@@ -27,7 +27,7 @@ function createMockPollFunctions(
     }),
     getNode: vi.fn().mockReturnValue({ name: 'BankSync Trigger' }),
     helpers: {
-      httpRequest: vi.fn(),
+      httpRequestWithAuthentication: vi.fn(),
     },
   };
 }
@@ -44,13 +44,14 @@ describe('BankSync Trigger Node', () => {
         accountId: { value: 'acc_001' },
       });
 
-      ctx.helpers.httpRequest.mockResolvedValue(transactionsFixture);
+      ctx.helpers.httpRequestWithAuthentication.mockResolvedValue(transactionsFixture);
 
       const { BankSyncTrigger } = await import('../nodes/BankSync/BankSyncTrigger.node');
       const trigger = new BankSyncTrigger();
       const result = await trigger.poll.call(ctx as any);
 
-      expect(ctx.helpers.httpRequest).toHaveBeenCalledWith(
+      expect(ctx.helpers.httpRequestWithAuthentication).toHaveBeenCalledWith(
+        'bankSyncApi',
         expect.objectContaining({
           method: 'GET',
           url: 'https://api.banksync.io/v1/banks/bank_001/accounts/acc_001/transactions',
@@ -68,7 +69,7 @@ describe('BankSync Trigger Node', () => {
         staticData,
       );
 
-      ctx.helpers.httpRequest.mockResolvedValue({
+      ctx.helpers.httpRequestWithAuthentication.mockResolvedValue({
         success: true,
         data: [],
         meta: { count: 0, cursor: 'cursor_next', hasMore: false },
@@ -78,7 +79,8 @@ describe('BankSync Trigger Node', () => {
       const trigger = new BankSyncTrigger();
       const result = await trigger.poll.call(ctx as any);
 
-      expect(ctx.helpers.httpRequest).toHaveBeenCalledWith(
+      expect(ctx.helpers.httpRequestWithAuthentication).toHaveBeenCalledWith(
+        'bankSyncApi',
         expect.objectContaining({
           qs: expect.objectContaining({ cursor: 'cursor_previous' }),
         }),
@@ -93,7 +95,7 @@ describe('BankSync Trigger Node', () => {
         accountId: { value: 'acc_001' },
       });
 
-      ctx.helpers.httpRequest.mockResolvedValue({
+      ctx.helpers.httpRequestWithAuthentication.mockResolvedValue({
         success: true,
         data: [],
         meta: { count: 0 },
