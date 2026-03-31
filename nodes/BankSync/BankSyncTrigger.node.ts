@@ -154,10 +154,9 @@ async function pollNewTransactions(
     qs.to = new Date().toISOString().split('T')[0];
   }
 
-  const response = await this.helpers.httpRequest({
+  const response = await this.helpers.httpRequestWithAuthentication.call(this, 'bankSyncApi', {
     method: 'GET',
     url: `${baseUrl}/v1/banks/${bankId}/accounts/${accountId}/transactions`,
-    headers: { 'X-API-Key': credentials.apiKey as string },
     qs,
     json: true,
   });

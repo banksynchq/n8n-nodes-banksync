@@ -23,10 +23,7 @@ export async function banksyncApiRequest(
   const options: IHttpRequestOptions = {
     method,
     url: `${baseUrl}${endpoint}`,
-    headers: {
-      'X-API-Key': credentials.apiKey as string,
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     json: true,
   };
 
@@ -39,7 +36,11 @@ export async function banksyncApiRequest(
   }
 
   try {
-    const response = await this.helpers.httpRequest(options);
+    const response = await this.helpers.httpRequestWithAuthentication.call(
+      this,
+      'bankSyncApi',
+      options,
+    );
 
     if (response.success === false) {
       throw new NodeApiError(this.getNode(), response as JsonObject, {
@@ -135,11 +136,10 @@ export async function banksyncApiRequestAllTransactions(
     }
 
     // banksyncApiRequest unwraps data, but we need meta for pagination.
-    // Use raw httpRequest to access the full response envelope.
-    const rawResponse = await this.helpers.httpRequest({
+    // Use authenticated request to access the full response envelope.
+    const rawResponse = await this.helpers.httpRequestWithAuthentication.call(this, 'bankSyncApi', {
       method: 'GET',
       url: `${baseUrl}${endpoint}`,
-      headers: { 'X-API-Key': credentials.apiKey as string },
       qs: queryParams,
       json: true,
     });
