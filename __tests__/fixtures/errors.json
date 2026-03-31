@@ -1,0 +1,24 @@
+{
+  "error401": {
+    "success": false,
+    "error": "Unauthorized"
+  },
+  "error403": {
+    "success": false,
+    "error": "Forbidden: insufficient scopes"
+  },
+  "error404": {
+    "success": false,
+    "error": "Not found"
+  },
+  "error409Sync": {
+    "success": false,
+    "error": "A sync job is already running for this feed"
+  },
+  "error422": {
+    "success": false,
+    "error": "Validation failed",
+    "errors": ["name is required", "dataType must be one of: transactions, balances"],
+    "warnings": ["schedule.frequency is deprecated"]
+  }
+}

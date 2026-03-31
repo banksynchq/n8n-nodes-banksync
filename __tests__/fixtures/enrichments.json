@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "enr_001",
+      "name": "Auto-categorize groceries",
+      "type": "rule",
+      "enabled": true,
+      "order": 0,
+      "dataType": "transactions",
+      "feedIds": ["feed_001"],
+      "allFeeds": false,
+      "ruleConfig": {
+        "rules": [
+          {
+            "name": "Groceries",
+            "conditions": {
+              "logic": "and",
+              "conditions": [{ "field": "description", "operator": "contains", "value": "GROCERY" }]
+            },
+            "action": { "field": "category", "value": "Groceries" }
+          }
+        ]
+      },
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-01-01T00:00:00Z",
+      "createdBy": "user_001"
+    }
+  ]
+}

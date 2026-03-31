@@ -1,0 +1,22 @@
+{
+  "node": "n8n-nodes-banksync.bankSync",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": ["Finance & Accounting"],
+  "resources": {
+    "primaryDocumentation": [
+      {
+        "url": "https://docs.banksync.io"
+      }
+    ],
+    "credentialDocumentation": [
+      {
+        "url": "https://docs.banksync.io/api/authentication"
+      }
+    ]
+  },
+  "alias": ["banking", "finance", "transactions", "sync", "plaid", "basiq"],
+  "subcategories": {
+    "Finance & Accounting": ["Banking"]
+  }
+}

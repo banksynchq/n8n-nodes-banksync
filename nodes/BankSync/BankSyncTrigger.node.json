@@ -1,0 +1,17 @@
+{
+  "node": "n8n-nodes-banksync.bankSyncTrigger",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": ["Finance & Accounting"],
+  "resources": {
+    "primaryDocumentation": [
+      {
+        "url": "https://docs.banksync.io"
+      }
+    ]
+  },
+  "alias": ["banking", "finance", "transactions", "trigger", "webhook"],
+  "subcategories": {
+    "Finance & Accounting": ["Banking"]
+  }
+}

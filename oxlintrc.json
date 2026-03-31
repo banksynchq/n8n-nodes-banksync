@@ -1,0 +1,10 @@
+{
+  "plugins": ["typescript", "import"],
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "typescript/no-explicit-any": "warn",
+    "import/no-duplicates": "warn"
+  },
+  "ignorePatterns": ["dist", "node_modules", "coverage", "__tests__"]
+}

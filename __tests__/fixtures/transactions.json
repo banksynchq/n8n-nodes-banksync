@@ -1,0 +1,39 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "txn_001",
+      "date": "2025-03-15",
+      "description": "STARBUCKS #1234",
+      "amount": -5.75,
+      "creditAmount": 0,
+      "debitAmount": 5.75,
+      "currency": "USD",
+      "category": "Food & Drink",
+      "type": "place",
+      "pending": false,
+      "accountId": "acc_001",
+      "bankId": "bank_001"
+    },
+    {
+      "id": "txn_002",
+      "date": "2025-03-14",
+      "description": "PAYROLL DEPOSIT",
+      "amount": 3500.0,
+      "creditAmount": 3500.0,
+      "debitAmount": 0,
+      "currency": "USD",
+      "category": "Income",
+      "type": "special",
+      "pending": false,
+      "accountId": "acc_001",
+      "bankId": "bank_001"
+    }
+  ],
+  "meta": {
+    "count": 2,
+    "cursor": "cursor_abc123",
+    "hasMore": false
+  },
+  "links": {}
+}

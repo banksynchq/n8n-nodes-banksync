@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "acc_001",
+      "bankId": "bank_001",
+      "accountNumber": "****1234",
+      "accountName": "Primary Checking",
+      "accountType": "checking",
+      "balance": 5000.5,
+      "availableBalance": 4800.0,
+      "currency": "USD",
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-01-15T00:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "feed_001",
+      "name": "Chase -> Notion",
+      "source": "sync",
+      "dataType": "transactions",
+      "state": "active",
+      "order": 0,
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-01-01T00:00:00Z"
+    }
+  ]
+}

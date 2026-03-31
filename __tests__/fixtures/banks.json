@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "bank_001",
+      "name": "Chase Checking",
+      "source": "plaid",
+      "type": "checking",
+      "order": 0,
+      "icon": "chase",
+      "connectionStatus": { "status": "connected" },
+      "institutionId": "ins_001",
+      "createdAt": "2025-01-01T00:00:00Z",
+      "updatedAt": "2025-01-01T00:00:00Z"
+    },
+    {
+      "id": "bank_002",
+      "name": "Westpac Savings",
+      "source": "basiq",
+      "type": "savings",
+      "order": 1,
+      "createdAt": "2025-02-01T00:00:00Z",
+      "updatedAt": "2025-02-01T00:00:00Z"
+    }
+  ]
+}

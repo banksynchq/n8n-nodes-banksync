@@ -1,0 +1,60 @@
+{
+  "name": "n8n-nodes-banksync",
+  "version": "0.1.0",
+  "description": "n8n community node for the BankSync financial data API",
+  "keywords": [
+    "banking",
+    "banksync",
+    "finance",
+    "n8n",
+    "n8n-community-node-package"
+  ],
+  "homepage": "https://github.com/banksynchq/n8n-nodes-banksync",
+  "license": "MIT",
+  "author": {
+    "name": "BankSync",
+    "url": "https://banksync.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/banksynchq/n8n-nodes-banksync.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/nodes/BankSync/BankSync.node.js",
+  "scripts": {
+    "build": "tsc && pnpm copy:icons",
+    "copy:icons": "cp nodes/BankSync/banksync.svg dist/nodes/BankSync/banksync.svg",
+    "dev": "n8n start",
+    "format": "oxfmt --check .",
+    "format:fix": "oxfmt --write .",
+    "lint": "oxlint --config oxlintrc.json",
+    "typecheck": "tsgo -p tsconfig.check.json",
+    "test": "vitest run",
+    "verify": "pnpm format && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "@typescript/native-preview": "*",
+    "n8n-workflow": "^1.60.0",
+    "oxfmt": "^0.41.0",
+    "oxlint": "^1.56.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.0"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "packageManager": "pnpm@10.11.0",
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/BankSyncApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/BankSync/BankSync.node.js",
+      "dist/nodes/BankSync/BankSyncTrigger.node.js"
+    ]
+  }
+}
