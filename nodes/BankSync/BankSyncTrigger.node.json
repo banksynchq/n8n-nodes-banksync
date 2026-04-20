@@ -10,8 +10,5 @@
       }
     ]
   },
-  "alias": ["banking", "finance", "transactions", "trigger", "webhook"],
-  "subcategories": {
-    "Finance & Accounting": ["Banking"]
-  }
+  "alias": ["banking", "finance", "transactions", "trigger", "webhook"]
 }

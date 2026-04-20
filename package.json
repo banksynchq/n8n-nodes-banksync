@@ -36,7 +36,7 @@
   "main": "dist/nodes/BankSync/BankSync.node.js",
   "scripts": {
     "build": "tsc && pnpm copy:icons",
-    "copy:icons": "cp nodes/BankSync/banksync.svg dist/nodes/BankSync/banksync.svg",
+    "copy:icons": "cp nodes/BankSync/banksync.svg dist/nodes/BankSync/banksync.svg && cp credentials/banksync.svg dist/credentials/banksync.svg",
     "dev": "pnpm build && docker compose up -d && docker logs n8n-dev -f",
     "dev:stop": "docker compose down",
     "dev:restart": "pnpm build && docker compose restart n8n && docker logs n8n-dev -f",

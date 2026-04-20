@@ -15,8 +15,5 @@
       }
     ]
   },
-  "alias": ["banking", "finance", "transactions", "sync", "plaid", "basiq"],
-  "subcategories": {
-    "Finance & Accounting": ["Banking"]
-  }
+  "alias": ["banking", "finance", "transactions", "sync", "plaid", "basiq"]
 }

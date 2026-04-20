@@ -5,6 +5,7 @@ import type {
   INodeTypeDescription,
   IDataObject,
 } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'n8n-workflow';
 
 import { banksyncApiRequest } from './GenericFunctions';
 import { searchBanks, searchAccounts, searchFeeds } from './methods/listSearch';
@@ -20,7 +21,7 @@ export class BankSyncTrigger implements INodeType {
     description: 'Triggers when new transactions arrive or jobs complete in BankSync',
     defaults: { name: 'BankSync Trigger' },
     inputs: [],
-    outputs: ['main'],
+    outputs: [NodeConnectionTypes.Main],
     credentials: [
       {
         name: 'bankSyncApi',
@@ -33,6 +34,7 @@ export class BankSyncTrigger implements INodeType {
         displayName: 'Event',
         name: 'event',
         type: 'options',
+        noDataExpression: true,
         options: [
           {
             name: 'New Transactions',

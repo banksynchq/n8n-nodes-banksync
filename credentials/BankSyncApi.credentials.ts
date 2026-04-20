@@ -9,6 +9,7 @@ export class BankSyncApi implements ICredentialType {
   name = 'bankSyncApi';
   displayName = 'BankSync API';
   documentationUrl = 'https://docs.banksync.io';
+  icon = 'file:banksync.svg' as const;
 
   properties: INodeProperties[] = [
     {
